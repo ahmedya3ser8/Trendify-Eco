@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { FaCartShopping, FaChevronDown, FaRegHeart, FaUser } from "react-icons/fa6";
-import { useState } from "react";
 
 const Header = () => {
   const [menuItems] = useState([
@@ -24,11 +24,11 @@ const Header = () => {
             ))}
           </ul>
           <ul className="flex items-center space-x-4">
-            <div className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg">
+            <li className="flex items-center gap-2 bg-gray-100 text-main p-2 rounded-lg">
               <FaUser />
               <span> ahmed yasser </span>
               <FaChevronDown />
-            </div>
+            </li>
             <li>
               <Link to='/wishlist'>
                 <FaRegHeart className="text-xl" />
