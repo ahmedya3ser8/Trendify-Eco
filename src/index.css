@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import 'swiper/css';
+
+@theme {
+  --color-main: #8B5E35;
+  --color-secondary: #090F41;
+  --font-caveat: "Caveat", cursive;
+}
+
+@layer components {
+  .container {
+    @apply px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20 mx-auto;
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #F6F6F6;
+}
