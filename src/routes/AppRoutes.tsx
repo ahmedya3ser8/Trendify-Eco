@@ -4,6 +4,8 @@ import { Toaster } from 'react-hot-toast';
 
 import { AuthLayout, MainLayout } from '@layouts/index';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ProtectedRoute from './ProtectedRoute';
+import PublicRoute from './PublicRoute';
 
 const Register = lazy(() => import('@features/auth/pages/register/Register'));
 const Login = lazy(() => import('@features/auth/pages/login/Login'));
@@ -27,24 +29,24 @@ const router = createBrowserRouter([
     path: 'auth',
     element: <AuthLayout />,
     children: [
-      { path: 'register', element: <Register /> },
-      { path: 'login', element: <Login /> },
-      { path: 'forget-password', element: <ForgetPassword /> }
+      { path: 'register', element: <PublicRoute> <Register /> </PublicRoute> },
+      { path: 'login', element: <PublicRoute> <Login /> </PublicRoute> },
+      { path: 'forget-password', element: <PublicRoute> <ForgetPassword /> </PublicRoute> }
     ]
   },
   {
     path: '',
     element: <MainLayout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: 'about-us', element: <AboutUs /> },
-      { path: 'contact-us', element: <ContactUs /> },
-      { path: 'blog', element: <Blog /> },
-      { path: 'products', element: <ProductList /> },
-      { path: 'products/:productId', element: <ProductDetails /> },
-      { path: 'wishlist', element: <Wishlist /> },
-      { path: 'cart', element: <Cart /> },
-      { path: 'checkout/:cartId', element: <Checkout /> },
+      { index: true, element: <ProtectedRoute> <Home /> </ProtectedRoute> },
+      { path: 'about-us', element: <ProtectedRoute> <AboutUs /> </ProtectedRoute> },
+      { path: 'contact-us', element: <ProtectedRoute> <ContactUs /> </ProtectedRoute> },
+      { path: 'blog', element: <ProtectedRoute> <Blog /> </ProtectedRoute> },
+      { path: 'products', element: <ProtectedRoute> <ProductList /> </ProtectedRoute> },
+      { path: 'products/:productId', element: <ProtectedRoute> <ProductDetails /> </ProtectedRoute> },
+      { path: 'wishlist', element: <ProtectedRoute> <Wishlist /> </ProtectedRoute> },
+      { path: 'cart', element: <ProtectedRoute> <Cart /> </ProtectedRoute> },
+      { path: 'checkout/:cartId', element: <ProtectedRoute> <Checkout /> </ProtectedRoute> },
     ]
   },
   {
