@@ -31,12 +31,12 @@ const Header = () => {
             </li>
             <li>
               <Link to='/wishlist'>
-                <FaRegHeart className="text-xl" />
+                <FaRegHeart className="text-xl text-main" />
               </Link>
             </li>
             <li>
               <Link to='/cart'>
-                <FaCartShopping className="text-xl" />
+                <FaCartShopping className="text-xl text-main" />
               </Link>
             </li>
           </ul>

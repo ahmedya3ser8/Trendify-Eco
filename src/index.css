@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import 'swiper/css';
+@import 'swiper/css/effect-fade';
 
 @theme {
   --color-main: #8B5E35;
@@ -11,6 +12,9 @@
   .container {
     @apply px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20 mx-auto;
   }
+  .btn {
+    @apply w-full h-12 bg-main text-white rounded-lg cursor-pointer transition duration-300 hover:bg-[#904d0f];
+  }
 }
 
 body {
@@ -20,4 +24,43 @@ body {
 
 .active {
   color: var(--color-main);
+}
+
+.floating_label_group {
+  position: relative;
+}
+
+.floating_label {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray-700);
+  background-color: transparent;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.floating_input {
+  width: 100%;
+  background-color: #fff;
+  height: 3rem;
+  padding: 0px 10px;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-700);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.floating_input:focus + .floating_label,
+.floating_input:not(:placeholder-shown) + .floating_label {
+  top: 0;
+  transform: translateY(-50%);
+  padding: 0 8px;
+  background-color: #fff;
+  color: var(--color-secondary);
+}
+
+.floating_input:focus {
+  border-color: var(--color-main);
 }

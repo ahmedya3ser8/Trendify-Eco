@@ -1,7 +1,12 @@
+import AuthSlider from "@features/auth/components/auth-slider/AuthSlider";
+import LoginForm from "@features/auth/components/login-form/LoginForm";
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <section className="grid grid-cols-2">
+      <LoginForm />
+      <AuthSlider />
+    </section>
   )
 }
 

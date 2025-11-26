@@ -1,0 +1,3 @@
+
+export { default as MainLayout } from "./main-layout/MainLayout";
+export { default as AuthLayout } from "./auth-layout/AuthLayout";

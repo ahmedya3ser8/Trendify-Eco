@@ -1,8 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
-import AuthLayout from '@layouts/auth-layout/AuthLayout';
-import MainLayout from '@layouts/main-layout/MainLayout';
+import { AuthLayout, MainLayout } from '@layouts/index';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const Register = lazy(() => import('@features/auth/pages/register/Register'));
 const Login = lazy(() => import('@features/auth/pages/login/Login'));
@@ -52,10 +53,15 @@ const router = createBrowserRouter([
   }
 ])
 
+const queryClient = new QueryClient();
+
 const AppRoutes = () => {
   return (
     <Suspense fallback={ <p> loading... </p> }>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <Toaster position='top-right' />
+      </QueryClientProvider>
     </Suspense>
   )
 }
