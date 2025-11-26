@@ -17,3 +17,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #F6F6F6;
 }
+
+.active {
+  color: var(--color-main);
+}
