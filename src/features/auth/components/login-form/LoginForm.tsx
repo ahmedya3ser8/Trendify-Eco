@@ -1,38 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from '@tanstack/react-query'
-import toast from 'react-hot-toast'
+import { Link } from "react-router-dom";
 
 import { Input } from "@components/common";
-import { loginSchema, type TLoginForm } from "@validations/index";
-import { loginService } from "@features/auth/index";
 import { LuLoader } from "react-icons/lu";
+import useLogin from "@hooks/useLogin";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm<TLoginForm>({
-    mode: 'onTouched',
-    resolver: zodResolver(loginSchema)
-  })
-  const submitForm: SubmitHandler<TLoginForm> = (data) => {
-    mutate(data);
-  }
-  const { mutate, isPending } = useMutation({
-    mutationFn: loginService,
-    onSuccess: (res) => {
-      console.log(res);
-      if (res.message === 'success') {
-        toast.success('Logged in successfully');
-        localStorage.setItem("access_token", res.token);
-        navigate('/');
-      }
-    },
-    onError: (err) => {
-      console.log(err);
-      toast.error(err.message);
-    }
-  })
+  const { register, handleSubmit, errors, submitForm, isPending } = useLogin();
   return (
     <div className="flex flex-col justify-center gap-4 px-10">
 

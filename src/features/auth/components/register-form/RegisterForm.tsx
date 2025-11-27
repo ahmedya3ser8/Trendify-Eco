@@ -1,35 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useForm, type SubmitHandler } from 'react-hook-form';
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from '@tanstack/react-query'
-import toast from 'react-hot-toast'
+import { Link } from "react-router-dom";
 
 import { Input } from "@components/common";
-import { registerSchema, type TRegisterForm } from "@validations/index";
-import { registerService } from "@features/auth/index";
 import { LuLoader } from "react-icons/lu";
+import useRegister from "@hooks/useRegister";
 
 const RegisterForm = () => {
-  const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm<TRegisterForm>({
-    mode: 'onTouched',
-    resolver: zodResolver(registerSchema)
-  })
-  const submitForm: SubmitHandler<TRegisterForm> = (data) => {
-    mutate(data);
-  }
-  const { mutate, isPending } = useMutation({
-    mutationFn: registerService,
-    onSuccess: (res) => {
-      if (res.message === 'success') {
-        toast.success('Account created successfully!');
-        navigate('/auth/login');
-      }
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    }
-  })
+  const { register, handleSubmit, errors, submitForm, isPending } = useRegister();
   return (
     <div className="flex flex-col justify-center gap-4 px-10">
 
