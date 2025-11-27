@@ -1,11 +1,12 @@
 import { useState } from 'react';
+
+import { Subscription } from '@components/ui';
 import blog1 from '/images/blogs/blog-1.png';
 import blog2 from '/images/blogs/blog-2.png';
 import blog3 from '/images/blogs/blog-3.png';
 import blog4 from '/images/blogs/blog-4.png';
 import blog5 from '/images/blogs/blog-5.png';
 import blog6 from '/images/blogs/blog-6.png';
-import { FaEnvelope } from 'react-icons/fa6';
 
 const Blog = () => {
   const [itemsList] = useState([
@@ -43,24 +44,7 @@ const Blog = () => {
           </div>
         </div>
       </section>
-      <section className="py-10">
-        <div className="container">
-          <div className="flex justify-center items-center flex-col gap-4 bg-white px-6 md:px-0 py-12">
-            <span className="text-main text-4xl">
-              <FaEnvelope />
-            </span>
-            <h3 className="uppercase text-secondary font-medium">sign up for teemate style news</h3>
-            <p className="text-sm text-gray-500 text-center">
-              Get 15% of your first purchaxsel! plus, be the first to known about sales, <br/>
-              new product launches and exclusive offers!
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 w-full lg:w-md">
-              <input type="text" className="w-full bg-white text-gray-500 p-2 border border-main outline-none rounded-lg" placeholder="Enter Your Email" />
-              <button className="p-2 bg-main text-white border border-white rounded-lg cursor-pointer">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Subscription />
     </>
   )
 }

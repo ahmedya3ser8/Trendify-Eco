@@ -8,8 +8,8 @@ const Header = () => {
     { route: '/', text: 'Home' },
     { route: '/products', text: 'Products' },
     { route: '/about-us', text: 'About Us' },
+    { route: '/blog', text: 'Blog' },
     { route: '/contact-us', text: 'Contact Us' },
-    { route: '/blog', text: 'Blog' }
   ])
   return (
     <header className="fixed w-full left-0 top-0 z-999 bg-white py-4 shadow">
