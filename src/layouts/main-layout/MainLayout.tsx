@@ -4,13 +4,13 @@ import { Footer, Header } from "@components/layout";
 
 const MainLayout = () => {
   return (
-    <div className="flex flex-col justify-between min-h-screen">
+    <>
       <Header />
-      <main>
+      <main className="min-h-screen">
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
 
