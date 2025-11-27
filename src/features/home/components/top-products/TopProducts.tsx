@@ -4,19 +4,18 @@ import { Button } from "@components/common/index";
 import { MainTitle, ProductItem } from "@components/ui/index";
 import { getAllProducts } from "@services/productService";
 
-const FlashSale = () => {
+const TopProducts = () => {
   const { data } = useQuery({
     queryKey: ['flashProducts'],
-    queryFn: () => getAllProducts(4),
+    queryFn: () => getAllProducts(8),
     staleTime: 5 * 60 * 1000,
     select: (data) => data.data
   })
   console.log(data);
-  
   return (
     <section className="py-10">
       <div className="container">
-        <MainTitle title='Flash Sale' description='Grab Them Before They Are Gone!' />
+        <MainTitle title='Top Products' description='Top Picks for You!' />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {data?.map((product) => (
             <ProductItem key={product.id} product={product} />
@@ -28,4 +27,4 @@ const FlashSale = () => {
   )
 }
 
-export default FlashSale;
+export default TopProducts;
