@@ -1,7 +1,11 @@
 
 const Checkout = () => {
   return (
-    <div>Checkout</div>
+    <section className="pt-28 pb-20">
+      <div className="container">
+        Checkout
+      </div>
+    </section>
   )
 }
 

@@ -1,7 +1,7 @@
 import axiosInstance from "@services/axiosInstance";
 import { isAxiosError } from "axios";
 
-import type { IProduct } from "@models/iproduct";
+import type { ICart } from "../models/icart";
 
 interface IResponse {
   cartId: string;
@@ -9,20 +9,6 @@ interface IResponse {
   status: string;
   numOfCartItems: number;
   data: ICart
-}
-
-interface ICart {
-  cartOwner: string;
-  createdAt: string;
-  updatedAt: string;
-  _id: string;
-  totalCartPrice: number;
-  products: {
-    count: number;
-    price: number;
-    _id: string;
-    product: IProduct;
-  }[]
 }
 
 export const addProductToCart = async (productId: string) => {
@@ -49,3 +35,26 @@ export const getLoggedUserCart = async () => {
   }
 }
 
+export const removeSpecificCartItem = async (productId: string) => {
+  try {
+    const { data } = await axiosInstance.delete<IResponse>(`cart/${productId}`);
+    return data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      throw new Error(err.response?.data.message || 'Something went wrong')
+    }
+    throw new Error("Unexpected error occurred");
+  }
+}
+
+export const updateCartProductQuantity = async (productId: string, count: number, action?: string) => {
+  try {
+    const { data } = await axiosInstance.put<IResponse>(`cart/${productId}`, { count, action });
+    return data;
+  } catch (err) {
+    if (isAxiosError(err)) {
+      throw new Error(err.response?.data.message || 'Something went wrong')
+    }
+    throw new Error("Unexpected error occurred");
+  }
+}
