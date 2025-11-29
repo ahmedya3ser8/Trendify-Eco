@@ -11,11 +11,12 @@ export interface IResponse {
   data: IProduct[]
 }
 
-export const getAllProducts = async (limit: number) => {
+export const getAllProducts = async (limit: number, catId?: string) => {
   try {
     const { data } = await axios.get<IResponse>(`https://ecommerce.routemisr.com/api/v1/products`, {
       params: { 
-        limit 
+        limit,
+        'category[in]': catId
       }
     });
     return data;

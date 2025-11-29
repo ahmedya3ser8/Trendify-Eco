@@ -1,3 +1,4 @@
+import BestSelling from "./components/best-selling/BestSelling";
 import Categories from "./components/categories/Categories";
 import Discover from "./components/discover/Discover";
 import FlashSale from "./components/flash-sale/FlashSale";
@@ -14,6 +15,7 @@ const Home = () => {
       <Categories />
       <FlashSale />
       <NewCollection />
+      <BestSelling />
       <TopProducts />
       <Discover />
       <TopServices />
