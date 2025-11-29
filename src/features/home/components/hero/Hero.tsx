@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import style from './style.module.css';
 
 const Hero = () => {
@@ -10,7 +11,7 @@ const Hero = () => {
             Explore a range of high-quality, affordable furniture designed to transform any room.
             Discover the perfect blend of style, comfort, and functionality for your space.
           </p>
-          <button className="btn w-1/6"> Shop Now </button>
+          <Link to='/products' className="btn w-1/6 flex items-center justify-center"> Shop Now </Link>
         </div>
       </div>
     </section>

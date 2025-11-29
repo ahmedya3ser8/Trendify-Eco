@@ -1,6 +1,5 @@
-
 import { ProductItem } from "@components/ui";
-import FilterProducts from "@features/products/components/filter-products/FilterProducts";
+import { FilterProducts } from "@features/products/components/index";
 import useProducts from "@hooks/useProducts";
 
 const ProductList = () => {

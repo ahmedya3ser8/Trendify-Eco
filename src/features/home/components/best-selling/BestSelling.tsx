@@ -16,12 +16,12 @@ const BestSelling = () => {
     <section className="py-10">
       <div className="container">
         <MainTitle title="Products" description="Best Selling Product" />
-        <div className="taps flex space-x-4 bg-gray-200 w-fit mx-auto py-2 px-6 rounded-2xl mb-8">
+        <div className="taps flex space-x-4 bg-[#eee] w-fit mx-auto py-2 px-6 rounded-2xl mb-8">
           {tabsList.map((tab) => (
             <button 
               key={tab.catId} 
               onClick={() => selectedTab(tab.catId)} 
-              className={`tap text-secondary text-sm py-2 px-4 rounded-2xl transition duration-300 cursor-pointer ${activeTab === tab.catId ? 'bg-gray-500 text-white' : ''}`}
+              className={`tap text-sm py-2 px-4 rounded-2xl transition duration-300 cursor-pointer ${activeTab === tab.catId ? 'bg-main text-white' : ''}`}
             > { tab.content } </button>
           ))}
         </div>

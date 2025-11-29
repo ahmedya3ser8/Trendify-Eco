@@ -1,12 +1,14 @@
-import type { IProduct } from "@models/iproduct";
+import { Link } from "react-router-dom";
+
 import { FaPlus, FaStar } from "react-icons/fa6";
+import type { IProduct } from "@models/iproduct";
 
 const ProductItem = ({ product }: { product: IProduct }) => {
   return (
     <div className="product bg-white border border-gray-300 overflow-hidden rounded-lg shadow">
-      <div className="image w-full h-[250px] cursor-pointer">
+      <Link to={`/products/${product.id}`} className="image block w-full h-[250px] cursor-pointer">
         <img src={product.imageCover} className="w-full h-full object-contain" alt={product.title} />
-      </div>
+      </Link>
       <div className="content p-4 flex flex-col gap-2">
         <h3 className="text-xl text-secondary font-semibold line-clamp-1"> {product.title} </h3>
         <div className="stars flex items-center gap-1">
