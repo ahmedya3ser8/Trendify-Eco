@@ -1,5 +1,6 @@
 import axios, { isAxiosError } from "axios";
-import type { ICategoryResponse } from "../models/icategory";
+
+import type { ICategoryResponse } from "@models/icategory";
 
 export const getAllCategories = async () => {
   try {

@@ -1,17 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { getAllCategories } from '@features/home/services/categoryService';
+import useCategories from '@hooks/useCategories';
 
 const Categories = () => {
-  const { data } = useQuery({
-    queryKey: ['recentCategories'],
-    queryFn: getAllCategories,
-    staleTime: 5 * 60 * 1000,
-    select: (data) => data.data
-  })
-  console.log(data);
+  const { data } = useCategories();
   return (
     <section className='py-20'>
       <Swiper

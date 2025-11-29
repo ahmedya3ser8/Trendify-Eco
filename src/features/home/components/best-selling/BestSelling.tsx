@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 
-import { MainTitle, ProductItem } from "@components/ui";
-import { getAllProducts } from "@services/productService";
 import { Button } from "@components/common";
-import type { IProduct } from "@models/iproduct";
+import { MainTitle, ProductItem } from "@components/ui";
+import useProducts from "@hooks/useProducts";
 
 const BestSelling = () => {
   const [tabsList] = useState([
@@ -13,29 +11,7 @@ const BestSelling = () => {
     { catId: "6439d58a0049ad0b52b9003f", content: "Women's" },
     { catId: "6439d2d167d9aa4ca970649f", content: "Electronics" }
   ]);
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [activeTab, setActiveTab] = useState('');
-  const { mutate } = useMutation({
-    mutationFn: ({ limit, catId }: { limit: number, catId?: string }) => getAllProducts(limit, catId),
-    onSuccess: (res) => {
-      setProducts(res.data);
-    },
-    onError: (err) => {
-      console.log(err);
-    }
-  })
-  const selectedTab = (catId?: string) => {
-    if (catId) {
-      setActiveTab(catId);
-      mutate({ limit: 4, catId });
-    } else {
-      setActiveTab('');
-      mutate({ limit: 4 });
-    }
-  }
-  useEffect(() => {
-    mutate({ limit: 4 })
-  }, [mutate])
+  const { activeTab, productsList, selectedTab } = useProducts(4);
   return (
     <section className="py-10">
       <div className="container">
@@ -50,7 +26,7 @@ const BestSelling = () => {
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {productsList.map((product) => (
             <ProductItem key={product.id} product={product} />
           ))}
         </div>

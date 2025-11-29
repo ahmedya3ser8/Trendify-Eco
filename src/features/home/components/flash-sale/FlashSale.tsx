@@ -1,18 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+import useProducts from "@hooks/useProducts";
 
 import { Button } from "@components/common/index";
 import { MainTitle, ProductItem } from "@components/ui/index";
-import { getAllProducts } from "@services/productService";
 
 const FlashSale = () => {
-  const { data } = useQuery({
-    queryKey: ['flashProducts'],
-    queryFn: () => getAllProducts(4),
-    staleTime: 5 * 60 * 1000,
-    select: (data) => data.data
-  })
-  console.log(data);
-  
+  const { data } = useProducts(4);
   return (
     <section className="py-10">
       <div className="container">
