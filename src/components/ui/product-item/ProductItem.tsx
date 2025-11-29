@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 
 import { FaPlus, FaStar } from "react-icons/fa6";
+import { LuLoader } from "react-icons/lu";
 import type { IProduct } from "@models/iproduct";
+import { useMutation } from "@tanstack/react-query";
+import { addProductToCart } from "@features/cart";
+import toast from "react-hot-toast";
 
 const ProductItem = ({ product }: { product: IProduct }) => {
+  const { mutate: addToCart, isPending } = useMutation({
+    mutationKey: ['addToCart', product.id],
+    mutationFn: addProductToCart,
+    onSuccess: (res) => {
+      console.log(res);
+      if (res.status === 'success') {
+        toast.success(res.message);
+      }
+    },
+    onError: (err) => {
+      toast.error(err.message);
+    }
+  })
   return (
     <div className="product bg-white border border-gray-300 overflow-hidden rounded-lg shadow">
       <Link to={`/products/${product.id}`} className="image block w-full h-[250px] cursor-pointer">
@@ -19,8 +36,8 @@ const ProductItem = ({ product }: { product: IProduct }) => {
         </div>
         <div className="flex justify-between items-center">
           <span className="text-main font-medium"> {product.price} EGP </span>
-          <button className="size-8 bg-main text-white flex justify-center items-center rounded-lg cursor-pointer"> 
-            <FaPlus /> 
+          <button onClick={() => addToCart(product.id)} className="size-8 bg-main text-white flex justify-center items-center rounded-lg cursor-pointer"> 
+            {isPending ? <LuLoader className="animate-spin" /> : <FaPlus />  }
           </button>
         </div>
       </div>

@@ -1,10 +1,11 @@
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 
 import type { ICategoryResponse } from "@models/icategory";
+import axiosInstance from "./axiosInstance";
 
 export const getAllCategories = async () => {
   try {
-    const { data } = await axios.get<ICategoryResponse>(`https://ecommerce.routemisr.com/api/v1/categories`);
+    const { data } = await axiosInstance.get<ICategoryResponse>(`/categories`);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {

@@ -1,6 +1,7 @@
 import type { IProduct } from "@models/iproduct";
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 import type { LoaderFunctionArgs } from "react-router-dom";
+import axiosInstance from "./axiosInstance";
 
 export interface IResponse {
   results: number;
@@ -14,7 +15,7 @@ export interface IResponse {
 
 export const getAllProducts = async (limit: number, catId?: string) => {
   try {
-    const { data } = await axios.get<IResponse>(`https://ecommerce.routemisr.com/api/v1/products`, {
+    const { data } = await axiosInstance.get<IResponse>(`/products`, {
       params: { 
         limit,
         'category[in]': catId
@@ -31,7 +32,7 @@ export const getAllProducts = async (limit: number, catId?: string) => {
 
 export const getSpecificProduct = async ({ params }: LoaderFunctionArgs) => {
   try {
-    const { data } = await axios.get<{ data: IProduct }>(`https://ecommerce.routemisr.com/api/v1/products/${params.productId}`);
+    const { data } = await axiosInstance.get<{ data: IProduct }>(`/products/${params.productId}`);
     return data.data;
   } catch (err) {
     if (isAxiosError(err)) {

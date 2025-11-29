@@ -1,12 +1,13 @@
-import axios, { isAxiosError } from 'axios';
+import { isAxiosError } from 'axios';
 
+import axiosInstance from '@services/axiosInstance';
+import type { TLoginForm } from '@validations/loginSchema';
 import type { TRegisterForm } from '@validations/registerSchema';
 import type { IUserResponse } from '../models/iuser';
-import type { TLoginForm } from '@validations/loginSchema';
 
 export const registerService = async (formData: TRegisterForm) => {
   try {
-    const { data } = await axios.post<IUserResponse>(`https://ecommerce.routemisr.com/api/v1/auth/signup`, formData);
+    const { data } = await axiosInstance.post<IUserResponse>(`/auth/signup`, formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
@@ -18,7 +19,7 @@ export const registerService = async (formData: TRegisterForm) => {
 
 export const loginService = async (formData: TLoginForm) => {
   try {
-    const { data } = await axios.post<IUserResponse>(`https://ecommerce.routemisr.com/api/v1/auth/signin`, formData);
+    const { data } = await axiosInstance.post<IUserResponse>(`/auth/signin`, formData);
     return data;
   } catch (err) {
     if (isAxiosError(err)) {
