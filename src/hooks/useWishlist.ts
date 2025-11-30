@@ -12,7 +12,6 @@ const useWishlist = () => {
   const { mutate: addToWishlist } = useMutation({
     mutationFn: addProductToWishlist,
     onSuccess: (res) => {
-      console.log(res);
       if (res.status === 'success') {
         toast.success(res.message);
         queryClient.invalidateQueries({ queryKey: ["wishlist"] });
@@ -25,7 +24,6 @@ const useWishlist = () => {
   const { mutate: removeFromWishlist } = useMutation({
     mutationFn: removeProductFromWishlist,
     onSuccess: (res) => {
-      console.log(res);
       if (res.status === 'success') {
         toast.success(res.message);
         queryClient.invalidateQueries({ queryKey: ["wishlist"] });

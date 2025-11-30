@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+
+import arrow from '/images/home/arrow.png';
+import { FaStar } from 'react-icons/fa6';
 import style from './style.module.css';
 
 const Hero = () => {
@@ -12,6 +15,15 @@ const Hero = () => {
             Discover the perfect blend of style, comfort, and functionality for your space.
           </p>
           <Link to='/products' className="btn w-1/6 flex items-center justify-center"> Shop Now </Link>
+          <div className="arrow">
+            <img src={arrow} className='w-[70px] md:w-[120px] relative left-[7%]' alt="arrow" />
+          </div>
+          <div className="text-white absolute left-[21%] bottom-[18%]">
+            <div className="flex items-center gap-2 text-lg">
+              4.8 | <FaStar /> <FaStar /> <FaStar /> <FaStar />
+            </div>
+            150k Total Review
+          </div>
         </div>
       </div>
     </section>
