@@ -1,7 +1,10 @@
+import useAddToCart from "@hooks/useAddToCart";
 import type { IProduct } from "@models/iproduct";
 import { FaStar } from "react-icons/fa6";
+import { LuLoader } from "react-icons/lu";
 
 const ProductInfo = ({ product }: { product: IProduct }) => {
+  const { addToCart, isPending } = useAddToCart();
   return (
     <div className="product_info w-xl p-2 flex flex-col gap-3">
       <h3 className="product_title text-2xl text-secondary font-semibold"> {product?.title} </h3>
@@ -24,7 +27,9 @@ const ProductInfo = ({ product }: { product: IProduct }) => {
         ))}
         <p className="ms-1 text-sm text-gray-400"> {product?.ratingsAverage} (500+) </p>
       </div>
-      <button className="btn"> add to cart </button>
+      <button onClick={() => addToCart(product.id)} className="btn"> 
+        {isPending ? <LuLoader className="animate-spin mx-auto" /> : 'add to cart'  }
+      </button>
     </div>
   )
 }

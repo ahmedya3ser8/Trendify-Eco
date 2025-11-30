@@ -1,4 +1,4 @@
-import type { ICategory } from "@features/home/models/icategory";
+import type { ICategory } from "./icategory";
 
 export interface IProduct {
   createdAt: string;

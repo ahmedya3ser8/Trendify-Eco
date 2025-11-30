@@ -7,3 +7,7 @@ export { type TLoginForm } from '@validations/loginSchema';
 
 export { contactSchema } from '@validations/contactSchema';
 export { type TcontactSchema } from '@validations/contactSchema';
+
+export { checkoutSchema } from '@validations/checkoutSchema';
+export { type TCheckoutSchema } from '@validations/checkoutSchema';
+

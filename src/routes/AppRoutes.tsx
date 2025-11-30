@@ -23,6 +23,7 @@ const Home = lazy(() => import('@features/home/Home'));
 const ContactUs = lazy(() => import('@features/contact-us/ContactUs'));
 const AboutUs = lazy(() => import('@features/about-us/AboutUs'));
 const Blog = lazy(() => import('@features/blog/Blog'));
+const AllOrders = lazy(() => import('@features/all-orders/AllOrders'));
 const NotFound = lazy(() => import('@features/not-found/NotFound'));
 
 const router = createBrowserRouter([
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       { path: 'wishlist', element: <ProtectedRoute> <Wishlist /> </ProtectedRoute> },
       { path: 'cart', element: <ProtectedRoute> <Cart /> </ProtectedRoute> },
       { path: 'checkout/:cartId', element: <ProtectedRoute> <Checkout /> </ProtectedRoute> },
+      { path: 'allorders', element: <ProtectedRoute> <AllOrders /> </ProtectedRoute> }
     ]
   },
   {
